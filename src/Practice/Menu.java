@@ -14,6 +14,7 @@ public class Menu {
             System.out.println("操作するメニューを選んでください。");
             System.out.println("1. 銘柄マスタ一覧表示");
             System.out.println("2. 銘柄マスタ新規登録");
+            System.out.println("3. 取引入力");
             System.out.println("9. アプリケーションを終了する");
             System.out.print("入力してください：");
             int userInput = scanner.nextInt();
@@ -39,6 +40,20 @@ public class Menu {
 
                     CsvWriter.writeCsv(csvFile);
                     System.out.println("---");
+                }
+                case 3 -> {
+                    System.out.println("「取引入力」が選択されました。");
+                    TradeValidateUp tradeValidateUp = new TradeValidateUp();
+                    TradeValidateDown tradeValidateDown = new TradeValidateDown();
+
+                    tradeValidateUp.valTradeTime();
+                    tradeValidateUp.valTradeName(csvFile);
+                    tradeValidateDown.valTradeSide();
+                    tradeValidateDown.valTradeQuantity();
+                    tradeValidateDown.valTradeTUPrice();
+                    tradeValidateDown.valTradeInputDatetime();
+
+
                 }
                 default -> {
                     System.out.println("\"" + userInput + "\"に対応するメニューは存在しません" );

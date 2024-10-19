@@ -1,18 +1,20 @@
 package Practice;
 
+import java.io.File;
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class TradeValidateUp {
-    private static LocalDateTime traded_Datetime;
-    private static String trade_Name;
-    private static String trade_Side;
-    static Scanner scanner = new Scanner(System.in);
+    private LocalDateTime traded_Datetime;
+    private String trade_Name;
+    Scanner scanner = new Scanner(System.in);
 
     public void valTradeTime() {
         boolean check = true;
@@ -46,23 +48,39 @@ public class TradeValidateUp {
         }
     }
 
-    public void valTradeName() {
+    public void valTradeName(File csvFile) {
         boolean check = true;
         while (check) {
-
+            System.out.print("銘柄名>");
+            trade_Name = scanner.nextLine();
+            if (isNameCheck(csvFile, trade_Name)) {
+                check = false;
+            }else {
+                System.out.println("銘柄が存在しません。正しく記入してください。");
+            }
         }
     }
 
-    public static LocalDateTime getTraded_Datetime() {
+
+
+    public boolean isNameCheck(File csvFile, String name) {
+        List<Stock> stockList = CsvReader.readCsv(csvFile);
+        for (Stock stock : stockList) {
+            if (stock.getName().equals(name)) {
+                System.out.println("正常な入力です。");
+                return true;
+            }
+        }
+        System.out.println("不正な入力です。");
+        return false;
+    }
+
+    public LocalDateTime getTraded_Datetime() {
         return traded_Datetime;
     }
 
-    public static String getTrade_Name() {
+    public String getTrade_Name() {
         return trade_Name;
-    }
-
-    public static String getTrade_Side() {
-        return trade_Side;
     }
 
 }

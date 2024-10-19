@@ -8,10 +8,6 @@ import java.util.Scanner;
 public class NewEntryTicker {
     private static String entryTicker;
 
-//    public NewEntryTicker(String entryTicker) {
-//        this.entryTicker = entryTicker;
-//    }
-
     public static void addTicker(File csvFile) {
         while (true) {
             Scanner scanner = new Scanner(System.in);
