@@ -61,8 +61,6 @@ public class TradeValidateUp {
         }
     }
 
-
-
     public boolean isNameCheck(File csvFile, String name) {
         List<Stock> stockList = CsvReader.readCsv(csvFile);
         for (Stock stock : stockList) {
