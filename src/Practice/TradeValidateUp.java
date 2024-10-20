@@ -32,6 +32,8 @@ public class TradeValidateUp {
                                 check = false;
                             }else if (traded_Datetime.getHour() == 15 && traded_Datetime.getMinute() <= 30) {
                                 check = false;
+                            }else {
+
                             }
                         }
                         default -> System.out.println("土日は時間外です。");

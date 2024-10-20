@@ -19,6 +19,7 @@ public class Menu {
             System.out.print("入力してください：");
             int userInput = scanner.nextInt();
             File csvFile = new File("src/Practice/Master.csv");
+            File tradeFile = new File("src/Practice/TradeData.csv");
 
             switch (userInput) {
                 case 9 -> {
@@ -43,16 +44,7 @@ public class Menu {
                 }
                 case 3 -> {
                     System.out.println("「取引入力」が選択されました。");
-                    TradeValidateUp tradeValidateUp = new TradeValidateUp();
-                    TradeValidateDown tradeValidateDown = new TradeValidateDown();
-
-                    tradeValidateUp.valTradeTime();
-                    tradeValidateUp.valTradeName(csvFile);
-                    tradeValidateDown.valTradeSide();
-                    tradeValidateDown.valTradeQuantity();
-                    tradeValidateDown.valTradeTUPrice();
-                    tradeValidateDown.valTradeInputDatetime();
-
+                    TradeValidateAll.validateAll(csvFile, tradeFile);
 
                 }
                 default -> {
