@@ -3,6 +3,7 @@ package Practice;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TradeValidateDown {
@@ -29,11 +30,16 @@ public class TradeValidateDown {
         boolean check = true;
         while (check) {
             System.out.print("数量(100株単位)>");
-            trade_Quantity = scanner.nextLong();
-            if (trade_Quantity % 100 == 0) {
-                check = false;
-            } else {
-                System.out.println("100株単位で入力してください。");
+            String quantityStr = scanner.nextLine();
+            try {
+                trade_Quantity = Long.parseLong(quantityStr);
+                if (trade_Quantity % 100 == 0) {
+                    check = false;
+                } else {
+                    System.out.println("100株単位で入力してください。");
+                }
+            }catch (NumberFormatException e) {
+                System.out.println("数字を入力してください。");
             }
         }
     }
@@ -41,10 +47,11 @@ public class TradeValidateDown {
     public void valTradeTUPrice() {
         boolean check = true;
         while (check) {
+            System.out.print("取引単価(少数第二位まで可能)>");
+            String tuPriceStr = scanner.next();
             try {
-                System.out.print("取引単価(少数第二位まで可能)>");
-                trade_TUPrice = scanner.nextBigDecimal();
-                trade_TUPrice.setScale(2, BigDecimal.ROUND_DOWN);
+                BigDecimal bdParse = new BigDecimal(tuPriceStr);
+                trade_TUPrice = bdParse.setScale(2, BigDecimal.ROUND_DOWN);
                 check = false;
 
             } catch (NumberFormatException e) {

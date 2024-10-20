@@ -34,7 +34,7 @@ public class Menu {
                 }
                 case 2 -> {
                     System.out.println("「銘柄マスタ新規登録」が選択されました。");
-                    NewEntryName.addName();
+                    NewEntryName.addName(csvFile);
                     NewEntryTicker.addTicker(csvFile);
                     NewEntryMarket.addMarket();
                     NewEntrySharedIssued.addSharedIssued();
