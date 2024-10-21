@@ -15,6 +15,7 @@ public class Menu {
             System.out.println("1. 銘柄マスタ一覧表示");
             System.out.println("2. 銘柄マスタ新規登録");
             System.out.println("3. 取引入力");
+            System.out.println("4. 取引表示");
             System.out.println("9. アプリケーションを終了する");
             System.out.print("入力してください：");
             int userInput = scanner.nextInt();
@@ -45,6 +46,12 @@ public class Menu {
                 case 3 -> {
                     System.out.println("「取引入力」が選択されました。");
                     TradeValidateAll.validateAll(csvFile, tradeFile);
+                }
+                case 4 -> {
+                    System.out.println("「取引表示」が選択されました。");
+                    List<TradeStock> readTrade = TradeReader.readTrade(tradeFile);
+                    TradeDisplay tradeDisplay = new TradeDisplay();
+                    tradeDisplay.showTrade(readTrade);
 
                 }
                 default -> {
