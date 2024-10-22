@@ -1,5 +1,8 @@
 package TextSummer3;
 
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -7,6 +10,7 @@ public class Menu {
     public void MenuSelect() {
         System.out.println("株式管理システムを開始します。");
         Scanner scanner = new Scanner(System.in);
+        File csvFile = new File("src/TextSummer3/Masterd.csv");
 
         boolean isRunning = true;
         while (isRunning){
@@ -22,6 +26,8 @@ public class Menu {
             switch (userInput) {
                 case "1" -> {
                     System.out.println("「銘柄マスタ一覧表示」が選択されました。");
+                    List<Stock> readCsv = CsvReader.readingCsv(csvFile);
+                    CsvDisplay.showCsv(readCsv);
                     System.out.println("---");
                 }
                 case "2" -> {
