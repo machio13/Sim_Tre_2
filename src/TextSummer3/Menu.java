@@ -11,6 +11,7 @@ public class Menu {
         System.out.println("株式管理システムを開始します。");
         Scanner scanner = new Scanner(System.in);
         File csvFile = new File("src/TextSummer3/Masterd.csv");
+        File tradeCsvFile = new File("src/TextSummer3/TradeData.csv");
 
         boolean isRunning = true;
         while (isRunning){
@@ -38,6 +39,7 @@ public class Menu {
                 }
                 case "3" -> {
                     System.out.println("「取引入力」が選択されました。");
+
                     System.out.println("---");
                 }
                 case "4" -> {
