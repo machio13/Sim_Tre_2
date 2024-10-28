@@ -1,8 +1,10 @@
 package TextSummer3;
 
+import java.io.File;
+
 public class CsvWriter {
 
-    public static void writeCsv() {
-        NewEntryAll.allNewEntry();
+    public void writeCsv(File csvFile) {
+        NewEntryAll.allNewEntry(csvFile);
     }
 }

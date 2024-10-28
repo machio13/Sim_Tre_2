@@ -11,13 +11,26 @@ public class NewMarket {
         boolean check = true;
 
         while (check) {
-            System.out.print("上場市場>");
+            System.out.print("上場市場(Prime:P, Standard:S, Growth:G)>");
             String userInput = scanner.nextLine();
             switch (userInput) {
-                case "P" -> newMarket = MarketBrand.Prime;
-                case "S" -> newMarket = MarketBrand.Standard;
-                case "G" -> newMarket = MarketBrand.Growth;
-                default -> newMarket = MarketBrand.Non;
+                case "P" -> {
+                    newMarket = MarketBrand.Prime;
+                    check = false;
+                }
+                case "S" -> {
+                    newMarket = MarketBrand.Standard;
+                    check = false;
+                }
+                case "G" -> {
+                    newMarket = MarketBrand.Growth;
+                    check = false;
+                }
+                default -> {
+                    newMarket = MarketBrand.Non;
+                    System.out.println("正しく入力してください。");
+                    check = true;
+                }
             }
         }
     }

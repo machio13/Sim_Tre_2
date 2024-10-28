@@ -18,7 +18,7 @@ public class NewName {
                 System.out.println("既に登録されている銘柄名です。入力し直してください。");
             }
 
-            if (newName.matches("[a-zA-Z0-9 .()]")) {
+            if (newName.matches("[a-zA-Z0-9 .()]*")) {
                 check = false;
             }else {
                 System.out.println("正しく入力してください。(半角英数字、半角スペース、半角カッコのみ可能)");
