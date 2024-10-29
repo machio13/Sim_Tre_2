@@ -26,6 +26,7 @@ public class ValAllWriter {
             + tradeStock.getTrade_side() + "," + tradeStock.getTrade_quantity() + ","
                     + tradeStock.getTrade_Unit_Price() + "," + tradeStock.getTrade_input_Datetime());
 
+            bufferedWriter.newLine();
 
         }catch (IOException e){
             System.out.println("ファイルが読み込めませんでした。");
