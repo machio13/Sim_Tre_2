@@ -1,6 +1,5 @@
 package TextSummer3;
 
-import java.awt.*;
 import java.io.File;
 import java.util.List;
 import java.util.Scanner;
@@ -45,6 +44,10 @@ public class Menu {
                 }
                 case "4" -> {
                     System.out.println("「取引表示」が選択されました。");
+                    TradeReader tradeReader = new TradeReader();
+                    List<TradeStock> tradeStockList = tradeReader.readTrade(tradeCsvFile);
+                    TradeDisplay tradeDisplay = new TradeDisplay();
+                    tradeDisplay.showTrade(tradeStockList);
                     System.out.println("---");
                 }
                 case "9" -> {
