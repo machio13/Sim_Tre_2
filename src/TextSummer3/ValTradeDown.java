@@ -12,9 +12,9 @@ public class ValTradeDown {
     private long valTradeQuantity;
     private BigDecimal valPrice;
     private LocalDateTime valInputDatetime;
+    Scanner scanner = new Scanner(System.in);
 
     public void addTradeSide() {
-        Scanner scanner = new Scanner(System.in);
         boolean check = true;
         while (check) {
             System.out.print("売買区分(Sell, Buy)>");
@@ -28,7 +28,6 @@ public class ValTradeDown {
     }
 
     public void addTradeQuantity() {
-        Scanner scanner = new Scanner(System.in);
         boolean check = true;
         while (check) {
             System.out.print("数量(100株単位)>");
@@ -47,10 +46,9 @@ public class ValTradeDown {
     }
 
     public void addTradePrice() {
-        Scanner scanner = new Scanner(System.in);
         boolean check = true;
         while (check) {
-            System.out.print("1株あたりの単価>");
+            System.out.print("1株あたりの単価(少数第二位まで表示可能)>");
             String userInput = scanner.nextLine();
             try {
                 BigDecimal bigDecimal = new BigDecimal(userInput);

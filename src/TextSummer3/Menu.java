@@ -39,7 +39,8 @@ public class Menu {
                 }
                 case "3" -> {
                     System.out.println("「取引入力」が選択されました。");
-
+                    ValAllWriter valAllWriter = new ValAllWriter();
+                    valAllWriter.writeTrade(tradeCsvFile, csvFile);
                     System.out.println("---");
                 }
                 case "4" -> {

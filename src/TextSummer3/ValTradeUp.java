@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class ValTradeUp {
     private LocalDateTime valTradeDatetime;
     private String valTradeName;
+    Scanner scanner = new Scanner(System.in);
 
     public void addTradeDatetime() {
-        Scanner scanner = new Scanner(System.in);
         boolean check = true;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd/HH:mm").withResolverStyle(ResolverStyle.STRICT);
         while (check) {
@@ -33,10 +33,10 @@ public class ValTradeUp {
                             System.out.println("土日で取引時間外です。");
                         }
                         default -> {
-                            if (valTradeDatetime.getHour() > 8 && valTradeDatetime.getHour() < 16) {
+                            if (valTradeDatetime.getHour() > 8 && valTradeDatetime.getHour() < 15) {
                                 check = false;
                             }else if (valTradeDatetime.getHour() == 15 && valTradeDatetime.getMinute() <= 30) {
-                                    check = false;
+                                check = false;
                             }else {
                                 System.out.println("取引時間外です");
                             }
@@ -52,7 +52,6 @@ public class ValTradeUp {
     }
 
     public void addTradeName(File csvFile){
-        Scanner scanner = new Scanner(System.in);
         boolean check = true;
         while (check) {
             System.out.print("銘柄名>");
