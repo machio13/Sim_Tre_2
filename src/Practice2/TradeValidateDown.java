@@ -1,9 +1,8 @@
-package Practice;
+package Practice2;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TradeValidateDown {

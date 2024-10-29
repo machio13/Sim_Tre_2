@@ -1,6 +1,5 @@
-package Practice;
+package Practice2;
 
-import javax.imageio.IIOException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

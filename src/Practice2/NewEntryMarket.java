@@ -1,6 +1,5 @@
-package Practice;
+package Practice2;
 
-import javax.swing.plaf.ScrollBarUI;
 import java.util.Scanner;
 
 public class NewEntryMarket {

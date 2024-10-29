@@ -1,4 +1,4 @@
-package Practice;
+package Practice2;
 
 public enum Market {
     Prime("P"),
