@@ -18,7 +18,9 @@ public class NewEntryAll {
         newSharesIssued.addSharesIssued();
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(csvFile, true))){
-            bufferedWriter.write(newTicker.getNewTicker() + "," + newName.getNewName() + "," + newMarket.getNewMarket().getFirstChar() + "," + newSharesIssued.getNewSharesIssued());
+            bufferedWriter.write(newTicker.getNewTicker() + "," + newName.getNewName() + ","
+                    + newMarket.getNewMarket().getFirstChar() + "," + newSharesIssued.getNewSharesIssued());
+
             bufferedWriter.newLine();
 
         }catch (IOException e) {

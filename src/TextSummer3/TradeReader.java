@@ -21,7 +21,7 @@ public class TradeReader {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineBox = line.split(lineSplit);
                 LocalDateTime replaceTDTime = LocalDateTime.parse(lineBox[0]);
-                Long replaceQuantity = Long.parseLong(lineBox[3]);
+                long replaceQuantity = Long.parseLong(lineBox[3]);
                 BigDecimal replaceTUPrice = new BigDecimal(lineBox[4]);
                 LocalDateTime replaceITime = LocalDateTime.parse(lineBox[5]);
 
