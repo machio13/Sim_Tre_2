@@ -8,33 +8,36 @@ import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class ValTradeDown {
-    private String valTradeSide;
-    private long valTradeQuantity;
-    private BigDecimal valPrice;
-    private LocalDateTime valInputDatetime;
+//
+//    private long valTradeQuantity;
+//    private BigDecimal valPrice;
+//    private LocalDateTime valInputDatetime;
     Scanner scanner = new Scanner(System.in);
 
-    public void addTradeSide() {
+    public String addTradeSide() {
         boolean check = true;
+        String userInput = "";
         while (check) {
             System.out.print("売買区分(Sell, Buy)>");
-            valTradeSide = scanner.nextLine();
-            if (valTradeSide.equals("Buy") || valTradeSide.equals("Sell")) {
+            userInput = scanner.nextLine();
+            if (userInput.equals("Buy") || userInput.equals("Sell")) {
                 check = false;
             }else {
                 System.out.println("正しく入力してください。(Sell or Buy)");
             }
-        }
+        }return userInput;
     }
 
-    public void addTradeQuantity() {
+    public long addTradeQuantity() {
         boolean check = true;
+        String userInputStr = "";
+        long userInput = 0;
         while (check) {
             System.out.print("数量(100株単位)>");
-            String quantityStr = scanner.nextLine();
+            userInputStr = scanner.nextLine();
             try {
-                valTradeQuantity = Long.parseLong(quantityStr);
-                if (valTradeQuantity % 100 == 0){
+                userInput = Long.parseLong(userInputStr);
+                if (userInput % 100 == 0){
                     check = false;
                 }else {
                     System.out.println("100株単位で入力してください。");
@@ -42,44 +45,47 @@ public class ValTradeDown {
             }catch (NumberFormatException e){
                 System.out.println("数字を入力してください。");
             }
-        }
+        }return userInput;
     }
 
-    public void addTradePrice() {
+    public BigDecimal addTradePrice() {
         boolean check = true;
+        String userInputStr = "";
+        BigDecimal userInput = null;
         while (check) {
             System.out.print("1株あたりの単価(少数第二位まで表示可能)>");
-            String userInput = scanner.nextLine();
+            userInputStr = scanner.nextLine();
             try {
-                BigDecimal bigDecimal = new BigDecimal(userInput);
-                valPrice = bigDecimal.setScale(2, BigDecimal.ROUND_DOWN);
+                BigDecimal bigDecimal = new BigDecimal(userInputStr);
+                userInput = bigDecimal.setScale(2, BigDecimal.ROUND_DOWN);
                 check = false;
 
             }catch (NumberFormatException e) {
                 System.out.println("数字を入力してください。");
             }
-        }
+        }return userInput;
     }
 
-    public void addTradeInputDatetime() {
-        valInputDatetime = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
+    public LocalDateTime addTradeInputDatetime() {
+        LocalDateTime valInputDatetime = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
         System.out.println("入力時刻：" + valInputDatetime);
         System.out.println("ーーー入力完了ーーー");
-    }
-
-    public String getValTradeSide() {
-        return valTradeSide;
-    }
-
-    public long getValTradeQuantity() {
-        return valTradeQuantity;
-    }
-
-    public BigDecimal getValPrice() {
-        return valPrice;
-    }
-
-    public LocalDateTime getValInputDatetime() {
         return valInputDatetime;
     }
+//
+//    public String getValTradeSide() {
+//        return valTradeSide;
+//    }
+//
+//    public long getValTradeQuantity() {
+//        return valTradeQuantity;
+//    }
+//
+//    public BigDecimal getValPrice() {
+//        return valPrice;
+//    }
+//
+//    public LocalDateTime getValInputDatetime() {
+//        return valInputDatetime;
+//    }
 }

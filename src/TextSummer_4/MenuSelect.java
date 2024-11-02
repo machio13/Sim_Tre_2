@@ -31,6 +31,8 @@ public class MenuSelect {
                 }
                 case "2" -> {
                     System.out.println("「銘柄マスタ新規登録」が選択されました。");
+                    NewAddAll newAddAll = new NewAddAll();
+                    newAddAll.EntryAll(marketCsvFile);
                     System.out.println("---");
                 }
                 case "3" -> {

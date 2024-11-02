@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class ValAllWriter {
 
@@ -11,15 +13,14 @@ public class ValAllWriter {
         ValTradeUp valTradeUp = new ValTradeUp();
         ValTradeDown valTradeDown = new ValTradeDown();
 
-        valTradeUp.addTradeDatetime();
-        valTradeUp.addTradeName(csvFile);
-        valTradeDown.addTradeSide();
-        valTradeDown.addTradeQuantity();
-        valTradeDown.addTradePrice();
-        valTradeDown.addTradeInputDatetime();
+        LocalDateTime tradedDatetime = valTradeUp.addTradeDatetime();
+        String name = valTradeUp.addTradeName(csvFile);
+        String side = valTradeDown.addTradeSide();
+        long quantity = valTradeDown.addTradeQuantity();
+        BigDecimal unitPrice = valTradeDown.addTradePrice();
+        LocalDateTime inputDatetime = valTradeDown.addTradeInputDatetime();
 
-        TradeStock tradeStock = new TradeStock(valTradeUp.getValTradeDatetime(), valTradeUp.getValTradeName(),
-                valTradeDown.getValTradeSide(), valTradeDown.getValTradeQuantity(), valTradeDown.getValPrice(), valTradeDown.getValInputDatetime());
+        TradeStock tradeStock = new TradeStock(tradedDatetime, name, side, quantity, unitPrice, inputDatetime);
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tradeCsv, true))){
             bufferedWriter.write(tradeStock.getTraded_Datetime() + "," + tradeStock.getTrade_Name() + ","

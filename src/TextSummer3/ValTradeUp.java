@@ -10,32 +10,34 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ValTradeUp {
-    private LocalDateTime valTradeDatetime;
-    private String valTradeName;
+//    private LocalDateTime valTradeDatetime;
+//    private String valTradeName;
     Scanner scanner = new Scanner(System.in);
 
-    public void addTradeDatetime() {
+    public LocalDateTime addTradeDatetime() {
         boolean check = true;
+        String userInputStr = "";
+        LocalDateTime userInput = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd/HH:mm").withResolverStyle(ResolverStyle.STRICT);
         while (check) {
             System.out.print("取引日時(yyyy-MM-dd/HH:mm)>");
-            String userInput = scanner.nextLine();
+            userInputStr = scanner.nextLine();
 
             try {
-                valTradeDatetime = LocalDateTime.parse(userInput,formatter);
+                userInput = LocalDateTime.parse(userInputStr,formatter);
                 LocalDateTime today = LocalDateTime.now();
 
-                DayOfWeek dayWeek = valTradeDatetime.getDayOfWeek();
+                DayOfWeek dayWeek = userInput.getDayOfWeek();
 
-                if (valTradeDatetime.isBefore(today) || valTradeDatetime.isEqual(today)) {
+                if (userInput.isBefore(today) || userInput.isEqual(today)) {
                     switch (dayWeek) {
                         case SATURDAY,SUNDAY -> {
                             System.out.println("土日で取引時間外です。");
                         }
                         default -> {
-                            if (valTradeDatetime.getHour() > 8 && valTradeDatetime.getHour() < 15) {
+                            if (userInput.getHour() > 8 && userInput.getHour() < 15) {
                                 check = false;
-                            }else if (valTradeDatetime.getHour() == 15 && valTradeDatetime.getMinute() <= 30) {
+                            }else if (userInput.getHour() == 15 && userInput.getMinute() <= 30) {
                                 check = false;
                             }else {
                                 System.out.println("取引時間外です");
@@ -48,21 +50,22 @@ public class ValTradeUp {
             }catch (DateTimeParseException e) {
                 System.out.println("規定通りに正しく入力されていません。入力し直してください。");
             }
-        }
+        }return userInput;
     }
 
-    public void addTradeName(File csvFile){
+    public String addTradeName(File csvFile){
         boolean check = true;
+        String userInput = "";
         while (check) {
             System.out.print("銘柄名>");
-            valTradeName = scanner.nextLine();
-            if(isCheckName(csvFile, valTradeName)) {
+            userInput = scanner.nextLine();
+            if(isCheckName(csvFile, userInput)) {
                 System.out.println("銘柄を確認しました。");
                 check = false;
             }else {
                 System.out.println("銘柄が存在しません。やり直してください。");
             }
-        }
+        }return userInput;
     }
 
     public boolean isCheckName(File csvFile, String name) {
@@ -73,12 +76,12 @@ public class ValTradeUp {
             }
         }return false;
     }
-
-    public LocalDateTime getValTradeDatetime() {
-        return valTradeDatetime;
-    }
-
-    public String getValTradeName() {
-        return valTradeName;
-    }
+//
+//    public LocalDateTime getValTradeDatetime() {
+//        return valTradeDatetime;
+//    }
+//
+//    public String getValTradeName() {
+//        return valTradeName;
+//    }
 }

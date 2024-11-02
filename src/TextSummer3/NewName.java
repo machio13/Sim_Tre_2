@@ -5,25 +5,25 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NewName {
-    private String newName;
 
-    public void addName(File csvFile) {
+    public String addName(File csvFile) {
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
+        String userInput = "";
 
         while (check) {
             System.out.print("銘柄名>");
-            newName = scanner.nextLine();
-            if (isNameChecker(csvFile, newName)) {
+            userInput = scanner.nextLine();
+            if (isNameChecker(csvFile, userInput)) {
                 System.out.println("既に登録されている銘柄名です。入力し直してください。");
             }
 
-            if (newName.matches("[a-zA-Z0-9 .()]*")) {
+            if (userInput.matches("[a-zA-Z0-9 .()]*")) {
                 check = false;
             }else {
                 System.out.println("正しく入力してください。(半角英数字、半角スペース、半角カッコのみ可能)");
             }
-        }
+        }return userInput;
     }
 
     public static boolean isNameChecker(File csvFile, String name) {
@@ -35,7 +35,4 @@ public class NewName {
         }return false;
     }
 
-    public String getNewName() {
-        return newName;
-    }
 }

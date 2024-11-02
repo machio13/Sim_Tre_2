@@ -26,7 +26,7 @@ public class CsvDisplay {
         System.out.println("|--------+-------------------------------+------------+-----------------|");
 
         for (Stock stock : stockList) {
-            String ticker = stock.getTicker();
+            String  ticker = stock.getTicker();
             String name = stock.getName();
             MarketBrand market = stock.getMarket();
             BigDecimal sharesIssued = stock.getSharesIssued();

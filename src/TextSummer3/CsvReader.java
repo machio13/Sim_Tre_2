@@ -21,6 +21,7 @@ public class CsvReader {
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineBox = line.split(lineSplit);
+
                 MarketBrand replaceMarket = MarketBrand.fromCode(lineBox[2]);
                 BigDecimal replaceSharesIssued = new BigDecimal(lineBox[3]);
 

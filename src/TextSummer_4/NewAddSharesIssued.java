@@ -1,0 +1,32 @@
+package TextSummer_4;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+public class NewAddSharesIssued {
+    private BigDecimal newSharesIssued;
+
+    public void addSharesIssued() {
+        Scanner scanner = new Scanner(System.in);
+        boolean check = true;
+        while (check) {
+            System.out.print("発行済み株式数>");
+            String userInputStr = scanner.nextLine();
+            try {
+                if (userInputStr.length() < 13) {
+                    newSharesIssued = new BigDecimal(userInputStr);
+                    check = false;
+                }else {
+                    System.out.println("12桁を超えています。入力し直してください。");
+                }
+            }catch (NumberFormatException e) {
+                System.out.println("数字を入力してください。");
+            }
+        }
+    }
+
+    public BigDecimal getNewSharesIssued() {
+        return newSharesIssued;
+    }
+}

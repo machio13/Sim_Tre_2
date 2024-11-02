@@ -3,6 +3,20 @@ package TextSummer3;
 import java.math.BigDecimal;
 
 public class Stock {
+//    interface tickers {
+//        String ticker();
+//    }
+//    interface names {
+//        String name();
+//    }
+//    interface market {
+//        MarketBrand market();
+//    }
+//    interface sharesIssued {
+//        BigDecimal sharesIssues();
+//    }
+//
+
     private String ticker;
     private String name;
     private MarketBrand market;
