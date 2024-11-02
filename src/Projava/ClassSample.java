@@ -1,4 +1,4 @@
-package SukkiriWakaru;
+package Projava;
 
 import java.util.Objects;
 

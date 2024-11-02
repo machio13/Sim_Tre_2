@@ -6,9 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class TradeReader {
 
@@ -31,7 +29,9 @@ public class TradeReader {
         }catch (IOException e) {
             System.out.println("ファイルが読み込めませんでした。");
         }
-        tradeStockList.sort(Comparator.comparing(TradeStock::getTrade_input_Datetime).reversed());
+//        tradeStockList.sort(Comparator.comparing((TradeStock o) -> o.getTraded_Datetime()).reversed());
+//        tradeStockList.sort(Comparator.comparing(TradeStock::getTrade_input_Datetime).reversed());
+        Collections.sort(tradeStockList, Comparator.comparing(TradeStock::getTrade_input_Datetime).reversed());
         return tradeStockList;
     }
 }

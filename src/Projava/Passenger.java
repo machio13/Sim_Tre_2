@@ -1,4 +1,4 @@
-package SukkiriWakaru;
+package Projava;
 
 public class Passenger implements NewInterFaceSample.Named {
 

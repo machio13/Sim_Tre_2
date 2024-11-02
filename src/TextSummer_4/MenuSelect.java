@@ -37,6 +37,7 @@ public class MenuSelect {
                 }
                 case "3" -> {
                     System.out.println("「取引入力」が選択されました。");
+
                     System.out.println("---");
                 }
                 case "4" -> {

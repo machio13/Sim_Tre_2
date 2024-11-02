@@ -3,25 +3,26 @@ package TextSummer_4;
 import java.util.Scanner;
 
 public class NewAddMarket {
-    private MarketCollect newMarket;
 
-    public void addMarket() {
+    public MarketCollect addMarket() {
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
+        String userInputStr = "";
+        MarketCollect userInput = null;
         while (check) {
             System.out.print("上場市場(Prime:P, Standard:S, Growth:G)>");
-            String userInput = scanner.nextLine();
-            switch (userInput) {
+            userInputStr = scanner.nextLine();
+            switch (userInputStr) {
                 case "P" -> {
-                    newMarket = MarketCollect.Prime;
+                    userInput = MarketCollect.Prime;
                     check = false;
                 }
                 case "S" -> {
-                    newMarket = MarketCollect.Standard;
+                    userInput = MarketCollect.Standard;
                     check = false;
                 }
                 case "G" -> {
-                    newMarket = MarketCollect.Growth;
+                    userInput = MarketCollect.Growth;
                     check = false;
                 }
                 default -> {
@@ -29,10 +30,6 @@ public class NewAddMarket {
                     check = true;
                 }
             }
-        }
-    }
-
-    public MarketCollect getNewMarket() {
-        return newMarket;
+        }return userInput;
     }
 }

@@ -4,26 +4,25 @@ import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class NewAddTicker {
-    private String newTicker;
 
-    public void addTicker(File marketFile) {
+    public String addTicker(File marketFile) {
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
+        String userInput = "";
         while (check) {
             System.out.print("銘柄コード>");
-            newTicker = scanner.nextLine();
-            if (isTickerCheck(marketFile, newTicker)) {
+            userInput = scanner.nextLine();
+            if (isTickerCheck(marketFile, userInput)) {
                 System.out.println("既に入力されている銘柄コードです。やり直して。");
             }
 
-            if (newTicker.matches("^\\d{4}$|^[0-9][0-9ACDF-HJ-NPR-UW-Y][0-9][0-9ACDF-HJ-NPR-UW-Y]")) {
+            if (userInput.matches("^\\d{4}$|^[0-9][0-9ACDF-HJ-NPR-UW-Y][0-9][0-9ACDF-HJ-NPR-UW-Y]")) {
                 check = false;
             }else {
                 System.out.println("正しく入力されていません。やり直して。");
             }
-        }
+        }return userInput;
     }
 
     public boolean isTickerCheck(File marketFile, String ticker) {
@@ -33,9 +32,5 @@ public class NewAddTicker {
                 return true;
             }
         }return false;
-    }
-
-    public String getNewTicker() {
-        return newTicker;
     }
 }

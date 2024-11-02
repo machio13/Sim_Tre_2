@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class NewAddAll {
 
@@ -13,12 +14,12 @@ public class NewAddAll {
         NewAddMarket newAddMarket = new NewAddMarket();
         NewAddSharesIssued newAddSharesIssued = new NewAddSharesIssued();
 
-        newAddName.addName(marketFile);
-        newAddTicker.addTicker(marketFile);
-        newAddMarket.addMarket();
-        newAddSharesIssued.addSharesIssued();
+        String name = newAddName.addName(marketFile);
+        String ticker = newAddTicker.addTicker(marketFile);
+        MarketCollect market = newAddMarket.addMarket();
+        BigDecimal sharesIssued = newAddSharesIssued.addSharesIssued();
 
-        Stock stock = new Stock(newAddTicker.getNewTicker(), newAddName.getNewName(), newAddMarket.getNewMarket(), newAddSharesIssued.getNewSharesIssued());
+        Stock stock = new Stock(name, ticker, market, sharesIssued);
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(marketFile, true))){
             bufferedWriter.write(stock.getTicker() + "," + stock.getName() + "," + stock.getMarket().getFirstChar() + "," + stock.getSharesIssued());
