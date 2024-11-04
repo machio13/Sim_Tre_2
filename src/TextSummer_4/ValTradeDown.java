@@ -37,5 +37,6 @@ public class ValTradeDown {
                 System.out.println("数字を入力してください。");
             }
         }
+        return userInput;
     }
 }

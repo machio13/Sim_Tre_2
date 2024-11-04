@@ -20,7 +20,7 @@ public class NewName {
 
             if (userInput.matches("[a-zA-Z0-9 .()]*")) {
                 check = false;
-            }else {
+            } else {
                 System.out.println("正しく入力してください。(半角英数字、半角スペース、半角カッコのみ可能)");
             }
         }return userInput;
