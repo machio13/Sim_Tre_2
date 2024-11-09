@@ -1,5 +1,9 @@
 package TextSummer_4;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class ValTradeDown {
@@ -19,7 +23,7 @@ public class ValTradeDown {
         }return userInput;
     }
 
-    public long addUnitPrice() {
+    public long addQuantity() {
         String userInputStr = "";
         long userInput = 0;
         boolean check = true;
@@ -38,5 +42,30 @@ public class ValTradeDown {
             }
         }
         return userInput;
+    }
+
+    public BigDecimal addUnitPrice() {
+        String userInputStr = "";
+        BigDecimal userInput = null;
+        boolean check = true;
+        while (check) {
+            System.out.print("1株あたりの価格(小数点第二位まで記入可能)>");
+            userInputStr = scanner.nextLine();
+            try {
+                BigDecimal bigDecimal= new BigDecimal(userInputStr);
+                userInput = bigDecimal.setScale(2, BigDecimal.ROUND_DOWN);
+                check = false;
+            }catch (NumberFormatException e) {
+                System.out.println("数字を入力してください。");
+            }
+        }
+        return userInput;
+    }
+
+    public LocalDateTime addInputDatetime() {
+        LocalDateTime nowTime = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
+        System.out.println("入力時間：" + nowTime);
+        System.out.println("ーーー入力完了ーーー");
+        return nowTime;
     }
 }

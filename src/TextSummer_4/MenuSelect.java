@@ -10,6 +10,7 @@ public class MenuSelect {
         boolean exit = true;
         Scanner scanner = new Scanner(System.in);
         File marketCsvFile = new File("src/TextSummer_4/MarketList.csv");
+        File tradeFile = new File("src/TextSummer_4/TradeData.csv");
 
         while (exit) {
             System.out.println("操作するメニューを選んでください。");
@@ -37,11 +38,15 @@ public class MenuSelect {
                 }
                 case "3" -> {
                     System.out.println("「取引入力」が選択されました。");
-
+                    ValTradeAllWriter valTradeAllWriter = new ValTradeAllWriter();
+                    valTradeAllWriter.tradeWriter(marketCsvFile, tradeFile);
                     System.out.println("---");
                 }
                 case "4" -> {
                     System.out.println("「取引一覧表示」が選択されました。");
+                    List<TradeStock>tradeStocks = TradeReader.tradeReader(tradeFile);
+                    TradeDisplay tradeDisplay = new TradeDisplay();
+                    tradeDisplay.showDisplay(tradeStocks);
                     System.out.println("---");
                 }
                 case "9" -> {
