@@ -16,7 +16,7 @@ public class MarketDisplay extends Formater{
             ExchangeMarket market = stockers.getMarket();
             String sharesIssued = isBigDecimalFormat(stockers.getSharesIssued());
 
-            System.out.printf("|  %-6s| %-34s | %8s | %16s |\n", ticker, name, market, sharesIssued);
+            System.out.printf("|  %-6s| %-34s | %-8s | %16s |\n", ticker, name, market, sharesIssued);
         }
         System.out.println("|===========================================================================|");
     }
