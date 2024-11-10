@@ -16,7 +16,7 @@ public class PlusName extends Checker{
             if (isNameCheck(marketFile, userInput)) {
                 System.out.println("既に記入済み");
             }
-            if (userInput.matches("[a-zA-Z0-9 .()]")) {
+            if (userInput.matches("[a-zA-Z0-9 .()]*")) {
                 check = false;
             }else {
                 System.out.println("使えない文字があります。やり直し。");

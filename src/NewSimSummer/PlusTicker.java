@@ -13,7 +13,7 @@ public class PlusTicker extends Checker{
         while (check) {
             System.out.print("銘柄コード>");
             userInput = scanner.nextLine();
-            if (isNameCheck(marketFile, userInput)) {
+            if (isTickerCheck(marketFile, userInput)) {
                 System.out.println("同じ銘柄コードが既に記入済み。");
             }
             if (userInput.matches("^\\d{4}$|^[0-9][0-9ACDFGHJKLMNPRSTUWXY][0-9][0-9ACDFGHJKLMNPRSTUWXY]")) {

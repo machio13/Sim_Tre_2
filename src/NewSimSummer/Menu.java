@@ -14,10 +14,13 @@ public class Menu {
             System.out.println("操作するメニューを選んでください。");
             System.out.println("1. 銘柄マスタ一覧表示");
             System.out.println("2. 銘柄マスタ新規登録");
+            System.out.println("3. 取引入力");
+            System.out.println("4. 取引表示");
             System.out.println("9. アプリケーションを終了します");
             System.out.print("入力してください；");
             String userInput = scanner.nextLine();
             File marketCsvFile = new File("src/NewSimSummer/Market.csv");
+            File tradeCsvFile = new File("src/NewSimSummer/TradeData.csv");
 
             switch (userInput) {
                 case "1" -> {
@@ -28,7 +31,13 @@ public class Menu {
                 }
                 case "2" -> {
                     System.out.println("「銘柄マスタ新規登録」が選択されました。");
-                    System.out.println("---");
+                    PlusMarketWriter plusMarketWriter = new PlusMarketWriter();
+                    plusMarketWriter.writeMarket(marketCsvFile);
+                }
+                case "3" -> {
+                    System.out.println("「取引入力」が選択されました。");
+                    TradeWriter tradeWriter = new TradeWriter();
+                    tradeWriter.writeTrade(marketCsvFile, tradeCsvFile);
                 }
                 case "9" -> {
                     System.out.println("アプリケーションを終了します。");
