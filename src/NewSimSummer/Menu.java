@@ -39,6 +39,12 @@ public class Menu {
                     TradeWriter tradeWriter = new TradeWriter();
                     tradeWriter.writeTrade(marketCsvFile, tradeCsvFile);
                 }
+                case "4" -> {
+                    System.out.println("「取引表示」が選択されました。");
+                    List<Trade> tradeList = TradeReader.readTradeCsv(tradeCsvFile);
+                    TradeDisplay tradeDisplay = new TradeDisplay();
+                    tradeDisplay.showTrade(tradeList);
+                }
                 case "9" -> {
                     System.out.println("アプリケーションを終了します。");
                     System.out.println("---");
