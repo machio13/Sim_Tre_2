@@ -46,8 +46,9 @@ public class Menu {
                     System.out.println("「取引表示」が選択されました。");
                     TradeReader tradeReader = new TradeReader();
                     List<TradeStock> tradeStockList = tradeReader.readTrade(tradeCsvFile);
+                    List<Stock> readCsvList = CsvReader.readingCsv(csvFile);
                     TradeDisplay tradeDisplay = new TradeDisplay();
-                    tradeDisplay.showTrade(tradeStockList);
+                    tradeDisplay.showTrade(tradeStockList, readCsvList);
                     System.out.println("---");
                 }
                 case "9" -> {

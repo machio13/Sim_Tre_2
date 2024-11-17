@@ -29,8 +29,6 @@ public class TradeReader {
         }catch (IOException e) {
             System.out.println("ファイルが読み込めませんでした。");
         }
-//        tradeStockList.sort(Comparator.comparing((TradeStock o) -> o.getTraded_Datetime()).reversed());
-//        tradeStockList.sort(Comparator.comparing(TradeStock::getTrade_input_Datetime).reversed());
         Collections.sort(tradeStockList, Comparator.comparing(TradeStock::getTrade_input_Datetime).reversed());
         return tradeStockList;
     }

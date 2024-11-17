@@ -9,6 +9,7 @@ public abstract class Checker {
         List<Stockers> stockersList = MarketCsvReader.readMarketCsv(marketFile);
         for (Stockers stockers : stockersList) {
             if (stockers.getName().equals(name)) {
+                System.out.println(stockers.getName());
                 return true;
             }
         }

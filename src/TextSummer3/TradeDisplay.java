@@ -7,10 +7,11 @@ import java.util.List;
 
 public class TradeDisplay {
 
-    public void showTrade(List<TradeStock> tradeStockList) {
+    public void showTrade(List<TradeStock> tradeStockList, List<Stock> stockList) {
         System.out.println("|=============================================================================================================|");
         System.out.println("| Traded Datetime  | Product Name             | Side | Quantity        | Traded Unit Price | Input DateTime   |");
         System.out.println("|------------------+--------------------------+------+-----------------+-------------------+------------------|");
+
 
         for (TradeStock tradeStock : tradeStockList) {
             LocalDateTime updateTDTime = tradeStock.getTraded_Datetime();
